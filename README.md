@@ -87,6 +87,14 @@ Add this to qb-target/init.lua into Config.BoxZones
 
 
 ```
+
+### Manual
+- Download the script and put it in the `[qb]` directory.
+- Add the following code to your server.cfg/resouces.cfg
+```
+ensure qb-core
+ensure qb-fbi
+```
 # License
 
     QBCore Framework
@@ -165,15 +173,6 @@ Add this to qb-target/init.lua into Config.BoxZones
 - /ebutton - Used to respond an emergency alert.
 - /takedrivinglicense - Takes the driving license from nearby player.
 - /takedna [id] - Takes a DNA sample from the player.
-
-## Installation
-### Manual
-- Download the script and put it in the `[qb]` directory.
-- Add the following code to your server.cfg/resouces.cfg
-```
-ensure qb-core
-ensure qb-fbi
-```
 
 ## Configuration
 ```
