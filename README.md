@@ -1,9 +1,92 @@
-    Edit made by 17Swat09
+    Initial Edit made by 17Swat09
+
 # qb-fbi
-FBI for QB-Core Framework :police_officer:
+FBI for QB-Core Framework :police_officer: rewritten from qb-policejob, updated by Samuel#0008
 
-You just need to add the job (fbi) to the dependencies.
 
+## Installation
+
+Add this to your qbcore/shared/jobs.lua
+```
+['fbi'] = {
+        label = 'Federal Investigation Bureau',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Trainee',
+                payment = 50
+            },
+            ['1'] = {
+                name = 'Agent',
+                payment = 75
+            },
+            ['2'] = {
+                name = 'Field Agent',
+                payment = 100
+            },
+            ['3'] = {
+                name = 'Special Agent',
+                payment = 125
+            },
+            ['4'] = {
+                name = 'Director',
+                isboss = true,
+                payment = 150
+            },
+        },
+    },
+```
+
+
+Add this to qb-target/init.lua into Config.BoxZones
+
+```
+["FIBArmory"] = {
+        name = "FIBArmory",
+        coords = vector3(118.09197998047,-728.92181396484,242.61134338379),
+        length = 2.0,
+        width = 3.4,
+        heading = 0,
+        debugPoly = false,
+        minZ=239.69,
+        maxZ=243.29,
+        options = {
+            {
+                type = "client",
+                event = "fbi:client:armory",
+                icon = "fas fa-clipboard",
+                label = "Access Armory",
+                job = "fbi"
+            }
+        },
+        distance = 3.5
+    },
+
+    ["FIBDuty2"] = {
+        name = "FIBDuty2",
+        coords = vector3(125.29919433594,-733.60913085938,242.12716674805),
+        length = 1.5,
+        width = 1.5,
+        heading = 31.27,
+        debugPoly = false,
+        minZ = 241.22,
+        maxZ = 244.22,
+        options = {
+            {
+                type = "client",
+                event = "Toggle:Duty",
+                icon = "fas fa-sign-in-alt",
+                label = "Sign In / Out",
+                job = "fbi",
+            },
+        },
+        distance = 2.0
+    },
+
+
+
+```
 # License
 
     QBCore Framework
@@ -31,13 +114,6 @@ You just need to add the job (fbi) to the dependencies.
 - [qb-log](https://github.com/qbcore-framework/qb-logs) - For logging certain events
 - [qb-menu](https://github.com/qbcore-framework/qb-menu) - For the vehicle menus
 - [qb-input](https://github.com/qbcore-framework/qb-input) - For accessing evidence stashes
-
-
-## Screenshots
-![On/Off Duty - Armery - Fingerprint](https://media.discordapp.net/attachments/927899259376922636/935978245403344967/unknown.png?width=1202&height=676)
-![Whitelisted FBI Armory](https://cdn.discordapp.com/attachments/927899259376922636/935980908438237264/unknown.png)
-![Whitelisted FBI Stash](https://cdn.discordapp.com/attachments/927899259376922636/935978117376405576/unknown.png)
-![Vehicle Spawner](https://cdn.discordapp.com/attachments/927899259376922636/935978459245707354/unknown.png)
 
 
 ## Features
