@@ -1,109 +1,6 @@
-    Edit made by 17Swat09
-# qb-fbi
-FBI for QB-Core Framework :police_officer:
-
-You just need to add the job (fbi) to the dependencies.
-
-# License
-
-    QBCore Framework
-    Copyright (C) 2021 Joshua Eger
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>
-
-## Dependencies
-- [qb-core](https://github.com/qbcore-framework/qb-core) -To implement the job
-- [qb-bossmenu](https://github.com/qbcore-framework/qb-bossmenu) - For the boss menu
-- [qb-garages](https://github.com/qbcore-framework/qb-garages) - For the vehicle spawner
-- [qb-clothing](https://github.com/qbcore-framework/qb-clothing) - For the locker room
-- [qb-phone](https://github.com/qbcore-framework/qb-phone) - For the MEOS app and notifications etc.
-- [qb-log](https://github.com/qbcore-framework/qb-logs) - For logging certain events
-- [qb-menu](https://github.com/qbcore-framework/qb-menu) - For the vehicle menus
-- [qb-input](https://github.com/qbcore-framework/qb-input) - For accessing evidence stashes
-
-
-## Screenshots
-![On/Off Duty - Armery - Fingerprint](https://media.discordapp.net/attachments/927899259376922636/935978245403344967/unknown.png?width=1202&height=676)
-![Whitelisted FBI Armory](https://cdn.discordapp.com/attachments/927899259376922636/935980908438237264/unknown.png)
-![Whitelisted FBI Stash](https://cdn.discordapp.com/attachments/927899259376922636/935978117376405576/unknown.png)
-![Vehicle Spawner](https://cdn.discordapp.com/attachments/927899259376922636/935978459245707354/unknown.png)
-
-
-## Features
-- Classical requirements like on duty/off duty, clothing, vehicle, stash etc.
-- Citizen ID based armory (Whitelisted)
-- Fingerprint test
-- Evidence locker (stash)
-- Whitelisted vehicles
-- Speed radars across the map
-- Stormram
-- Impounding player vehicle (permanent / for an amount of money)
-- Integrated jail system
-- Bullet casings
-- GSR
-- Blood drop
-- Evidence bag & Money bag
-- Police radar
-- Handcuff as an item (Can used via command too. Check Commands section.)
-- Emergency services can see each other on map
-
-### Commands
-- /spikestrip - Places spike strip on ground.
-- /pobject [pion/barier/schotten/tent/light/delete] - Places or deletes an object on/from ground.
-- /cuff - Cuffs/Uncuffs nearby player
-- /palert [text] - Sends an alert.
-- /escort - Escorts nearby plyer.
-- /mdt - Opens the MDT.
-- /callsign [text] - Sets the player a callsign on database.
-- /clearcasings - Clears nearby bullet casings.
-- /jail [id] [time] - Sends a player to the jail.
-- /unjail [id] - Takes the player out of jail.
-- /clearblood - Clears nearby blood drops.
-- /seizecash - Seizes nearby player's cash. (Puts in money bag)
-- /sc - Puts soft cuff on nearby player.
-- /cam [cam] - Shows the selected security cam display.
-- /flagplate [plate] [reason] - Flags the vehicle.
-- /unflagplate [plate] - Removes the flag of a vehicle.
-- /plateinfo [plate] - Displays if a vehicle is marked or not.
-- /depot [price] - Depots nearby vehicle. Player can take it after paying the cost.
-- /impound - Impounds nearby vehicle permanently.
-- /paytow [id] - Makes payment to the tow driver.
-- /paylawyer [id] - Makes payment to the lawyer.
-- /radar - Toggles the police radar.
-- /911 [message] - Sends a report to emergency services.
-- /911r [id] - Used to respond the emergency alerts.
-- /911a [message] - Sends an anonymous report to emergency services (gives no location).
-- /anklet - Places anklet (tracking device) on nearby player.
-- /removeanklet [citizenid] - Removes the anklet from player.
-- /ebutton - Used to respond an emergency alert.
-- /takedrivinglicense - Takes the driving license from nearby player.
-- /takedna [id] - Takes a DNA sample from the player.
-
-## Installation
-### Manual
-- Download the script and put it in the `[qb]` directory.
-- Add the following code to your server.cfg/resouces.cfg
-```
-ensure qb-core
-ensure qb-fbi
-```
-
-## Configuration
-```
 Config = {}
 
-Config.Objects = { -- Objects to be placed with /pobject [object]
+Config.Objects = {
     ["cone"] = {model = `prop_roadcone02a`, freeze = false},
     ["barier"] = {model = `prop_barrier_work06a`, freeze = true},
     ["schotten"] = {model = `prop_snow_sign_road_06g`, freeze = true},
@@ -113,7 +10,7 @@ Config.Objects = { -- Objects to be placed with /pobject [object]
 
 Config.Locations = {
    ["duty"] = {
-       [1] = vector3(120.25, -725.51, 242.15),
+       [1] = vector3(120.25, -725.51, -242.15),
    },
    ["vehicle"] = {
        [1] = vector4(103.62, -720.69, 33.13, 248.46),
@@ -128,7 +25,7 @@ Config.Locations = {
       [1] = vector4(449.168, -981.325, 43.691, 87.234),
    },
    ["armory"] = {
-       [1] = vector3(124.74, -730.34, 242.15),
+       [1] = vector3(124.74, -730.34, -242.15),
    },
    ["trash"] = {
        [1] = vector3(118.35, -754.77, 242.15),
@@ -140,17 +37,16 @@ Config.Locations = {
        [1] = vector3(120.19, -745.34, 242.15),
    },
    ["stations"] = {
-       [1] = {label = "FBI Station", coords = vector4(136.92, -768.0, 45.75, 298.22)},
+       [1] = {label = "Federal Investigation Bureau", coords = vector4(136.92, -768.0, 45.75, 298.22)},
    },
 }
 
-Config.ArmoryWhitelist = {} -- Citizen ID Based Armory Whitelist (With Export for Other Scripts)
+Config.ArmoryWhitelist = {}
 
+Config.Helicopter = "POLMAV"
 
-Config.Helicopter = "POLMAV" -- Model of the Helicopter for Helicopter Spawner
-
-Config.SecurityCameras = { -- Security Cam Locations
-    hideradar = false, -- Don't change
+Config.SecurityCameras = {
+    hideradar = false,
     cameras = {
         [1] = {label = "Pacific Bank CAM#1", coords = vector3(257.45, 210.07, 109.08), r = {x = -25.0, y = 0.0, z = 28.05}, canRotate = false, isOnline = true},
         [2] = {label = "Pacific Bank CAM#2", coords = vector3(232.86, 221.46, 107.83), r = {x = -25.0, y = 0.0, z = -140.91}, canRotate = false, isOnline = true},
@@ -189,7 +85,8 @@ Config.SecurityCameras = { -- Security Cam Locations
     },
 }
 
-Config.AuthorizedVehicles = { -- Police Vehicles and required grade
+Config.AuthorizedVehicles = {
+    --Change this model cars
 	-- Grade 0
 	[0] = {
 		["police"] = "Police Car 1",
@@ -248,9 +145,10 @@ Config.AuthorizedVehicles = { -- Police Vehicles and required grade
 	}
 }
 
+
 Config.WhitelistedVehicles = {}
 
-Config.AmmoLabels = { -- Labels for Weapon Ammo
+Config.AmmoLabels = {
     ["AMMO_PISTOL"] = "9x19mm parabellum bullet",
     ["AMMO_SMG"] = "9x19mm parabellum bullet",
     ["AMMO_RIFLE"] = "7.62x39mm bullet",
@@ -259,7 +157,7 @@ Config.AmmoLabels = { -- Labels for Weapon Ammo
     ["AMMO_SNIPER"] = "Large caliber bullet",
 }
 
-Config.Radars = { -- Radar Locations
+Config.Radars = {
 	vector4(-623.44421386719, -823.08361816406, 25.25704574585, 145.0),
 	vector4(-652.44421386719, -854.08361816406, 24.55704574585, 325.0),
 	vector4(1623.0114746094, 1068.9924316406, 80.903594970703, 84.0),
@@ -273,7 +171,7 @@ Config.Radars = { -- Radar Locations
 	vector4(-823.3688, -1146.980, 8.0, 300.0),
 }
 
-Config.CarItems = { -- Default Trunk Items for Police Vehicles
+Config.CarItems = {
     [1] = {
         name = "heavyarmor",
         amount = 2,
@@ -297,8 +195,8 @@ Config.CarItems = { -- Default Trunk Items for Police Vehicles
     },
 }
 
-Config.Items = { -- Items to be displayed on Armory
-    label = "Police Armory",
+Config.Items = {
+    label = "FBI Armory",
     slots = 30,
     items = {
         [1] = {
@@ -480,4 +378,40 @@ Config.Items = { -- Items to be displayed on Armory
         }
     }
 }
-```
+
+Config.VehicleSettings = {
+    ["car1"] = { --- Model name
+        ["extras"] = {
+            ["1"] = true, -- on/off
+            ["2"] = true,
+            ["3"] = true,
+            ["4"] = true,
+            ["5"] = true,
+            ["6"] = true,
+            ["7"] = true,
+            ["8"] = true,
+            ["9"] = true,
+            ["10"] = true,
+            ["11"] = true,
+            ["12"] = true,
+            ["13"] = true,
+        }
+    },
+    ["car2"] = {
+        ["extras"] = {
+            ["1"] = true,
+            ["2"] = true,
+            ["3"] = true,
+            ["4"] = true,
+            ["5"] = true,
+            ["6"] = true,
+            ["7"] = true,
+            ["8"] = true,
+            ["9"] = true,
+            ["10"] = true,
+            ["11"] = true,
+            ["12"] = true,
+            ["13"] = true,
+        }
+    }
+}
